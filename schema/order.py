@@ -20,5 +20,5 @@ class OrderCreate(BaseModel):
     items: list[int]
 
 orders: list[Order] = [
-    Order(id=1, customer_id=1, items=[2])
+    Order(id=1, customer_id=1, items=[1,2])
 ]

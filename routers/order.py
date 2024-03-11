@@ -26,7 +26,8 @@ def create_order(payload: OrderCreate = Depends(order_service.check_availability
         status=OrderStatus.pending 
     )
     orders.append(new_order)
-    return {'message': 'Order created successfully', 'data': new_order}
+    # return {'message': 'Order created successfully', 'data': new_order}
+    return new_order
 
 
 @order_router.put('/{order_id}/checkout', status_code=200, response_model=Order)
