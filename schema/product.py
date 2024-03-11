@@ -12,6 +12,11 @@ class ProductCreate(BaseModel):
     price: Decimal
     quantity_available: int
 
+class ProductUpdate(BaseModel):
+    name: str = None
+    price: Decimal = None
+    quantity_available: int = None
+
 products = {
     1: Product(id=1, name="Milo", price=Decimal('50.00'), quantity_available=1),
     2: Product(id=2, name="Pepsi", price=Decimal('150.00'), quantity_available=15),

@@ -33,4 +33,13 @@ class OrderService:
             product.quantity_available -= 1
         return payload
     
+    @staticmethod
+    def does_order_exist(order_id: int):
+        order_set = set()
+        for order in Order:
+            order_set.add(order_id)
+        if order_id not in order_set:
+            raise HTTPException(status_code=404, detail="order does not exist")
+        return order_id
+    
 order_service = OrderService()

@@ -1,6 +1,8 @@
 from fastapi import APIRouter, HTTPException
+from fastapi import Depends
 
 from schema.customer import Customer, CustomerCreate, customers
+from services.customer import CustomerServices
 
 customer_router = APIRouter()
 
@@ -10,7 +12,7 @@ customer_router = APIRouter()
 
 # create customer
 @customer_router.post('/', status_code=201) 
-def create_customer(payload: CustomerCreate):
+def create_customer(payload: CustomerCreate = Depends(CustomerServices.validate_username)):
     customer_id = len(customers) + 1
     new_customer = Customer(
         id=customer_id, 

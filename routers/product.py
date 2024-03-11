@@ -24,3 +24,14 @@ def create_product(payload: ProductCreate):
 def list_products():
     return {'message': 'success', 'data': products}
 
+@product_router.put('/{product_id}', status_code=200)
+def edit_product(product_id: int, payload: ProductCreate):
+    product = products.get(product_id)
+    if product:
+        product.name = payload.name 
+        product.price = payload.price
+        product.quantity_available = payload.quantity_available 
+        return {'message': 'Product edited successfully', 'data': product}
+    else:
+        raise HTTPException(status_code=404, detail="Product not found")
+

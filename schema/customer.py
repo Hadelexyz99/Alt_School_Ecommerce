@@ -10,6 +10,11 @@ class CustomerCreate(BaseModel):
     address: str
 
 
+# class CustomerUpdate(BaseModel):
+#     username: str = None
+#     address: str = None
+
+
 customers: list[Customer] = [
     Customer(id=1, username="damilare", address="3, olusola str"),
     Customer(id=2, username="sweetboy", address="23, johnson str")
