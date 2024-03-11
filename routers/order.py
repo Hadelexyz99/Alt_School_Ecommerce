@@ -6,7 +6,8 @@ from services.order import order_service
 order_router = APIRouter()
 
 # list all order
-# create an order 
+# create an order
+# check out an order 
 
 @order_router.get('/', status_code=200)
 def list_orders():
@@ -26,8 +27,7 @@ def create_order(payload: OrderCreate = Depends(order_service.check_availability
         status=OrderStatus.pending 
     )
     orders.append(new_order)
-    # return {'message': 'Order created successfully', 'data': new_order}
-    return new_order
+    return {'message': 'Order created successfully', 'data': new_order}
 
 
 @order_router.put('/{order_id}/checkout', status_code=200, response_model=Order)
